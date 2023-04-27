@@ -27,7 +27,8 @@ def update_graphe(val):
     slider_capacity.valtext.set_text("{:.2E}".format(capacity))
     
     # Calcul de la fonction de transfert
-    h = transfer_function(2*np.pi*frequency, resistance * capacity)
+    tau = resistance * capacity
+    h = transfer_function(2*np.pi*frequency, tau)
     
     # Callcul de l'amplitude et de la phase du signal de sortie
     exit_bode = transfer_function(2*np.pi * excitation_frequency, resistance * capacity)
@@ -64,7 +65,8 @@ plt.subplots_adjust(bottom=0.23)
 
 # Diagramme de Bode
 frequency = np.logspace(1, 8, N_SAMPLES)
-h = transfer_function(2*np.pi*frequency, resistance * capacity)
+tau = resistance * capacity
+h = transfer_function(2*np.pi*frequency, tau)
 
 # Diagramme en amplitude
 amplitude, = ax['amplitude'].loglog(frequency, np.abs(h), 'r-')
