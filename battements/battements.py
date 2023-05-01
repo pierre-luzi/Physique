@@ -10,7 +10,7 @@ import cmath, math
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib as mpl
-from matplotlib.widgets import Slider, Button, RadioButtons, CheckButtons
+from matplotlib.widgets import Slider
 
 
 N_SAMPLES = 1000
@@ -77,34 +77,9 @@ s_frequence1 = Slider(ax_frequence1, 'f_1', 240, 640, valinit=frequence1)
 ax_frequence2 = plt.axes([0.1, 0.07, 0.8, 0.03])
 s_frequence2 = Slider(ax_frequence2, 'f_2', 240, 640, valinit=frequence2)
 
+# Mise à jour des graphes lors de l'utilisation des sliders
 s_frequence1.on_changed(update_graphe)
 s_frequence2.on_changed(update_graphe)
 
-   
-
-
-
-# # Creation du bouton de "reset"
-# resetax = plt.axes([0.8, 0.015, 0.1, 0.04])
-# button = Button(resetax, 'Reset', color=axcolor, hovercolor='0.975')
-# # Definition de la fonction de "reset" (valeurs par defaut)
-# def reset(event):
-#     s_N.reset() # La methode .reset() appliquee a la barre s_N lui redonne sa valeur valinit, soit f0
-#     s_a.reset() # La methode .reset() appliquee a la barre s_a lui redonne sa valeur valinit, soit a0
-#     s_b.reset() # La methode .reset() appliquee a la barre s_b lui redonne sa valeur valinit, soit t0
-#     s_lamb.reset() # La methode .reset() appliquee a la barre s_lamb lui redonne sa valeur valinit, soit t0
-#
-# button.on_clicked(reset) # Lorsqu'on clique sur "reset", on applique la fonction reset definie au dessus
-#
-# # Creation du menu de selection des traces a afficher
-# cax = plt.axes([0.015, 0.3, 0.2, 0.15], axisbg=axcolor)
-# check = CheckButtons(cax, ('Fonction', 'Facteur de forme', 'Facteur de structure'), (True, False, False))
-# # Definition de la fonction qui passe un affichage de visible a invisible
-# def chooseplot(label):
-#     if label == 'Fonction': l.set_visible(not l.get_visible()) # Si on clique sur le bouton "Fonction", la trace 'l' passe visible si elle ne l'etait pas, et vice versa
-#     elif label == 'Facteur de forme': l_forme.set_visible(not l_forme.get_visible()) # Si on clique sur le bouton "Facteur de forme", la trace 'l_forme' passe visible si elle ne l'etait pas, et vice versa
-#     elif label == 'Facteur de structure': l_structure.set_visible(not l_structure.get_visible()) # Si on clique sur le bouton "Facteur de structure", la trace 'l_structure' passe visible si elle ne l'etait pas, et vice versa
-#     fig.canvas.draw_idle() # On provoque la mise a jour du graphique, qui n'est pas automatique par defaut
-# check.on_clicked(chooseplot) # Lorsqu'on coche un de ces boutons, on applique la fonction chooseplot
-
-plt.show() # On provoque l'affichage a l'ecran
+# Affichage du graphique
+plt.show()
